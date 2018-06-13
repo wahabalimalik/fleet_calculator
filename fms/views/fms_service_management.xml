@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	 <record id='fms.vehicles_services_logs_action' model='ir.actions.act_window'>
+    <field name="name">Vehicles Services Logs</field>
+    <field name="res_model">fleet.vehicle.log.services</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+  <menuitem id="fms.vehicles_services_logs" name="Vehicles Services Logs" parent="menu_fms_service"  sequence="10" action="fms.vehicles_services_logs_action"/>
+
+</odoo>

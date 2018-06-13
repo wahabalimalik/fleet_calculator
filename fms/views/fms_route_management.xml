@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<record id="fms_vehicle_route_form" model="ir.ui.view" >
+		<field name="name">fleet.vehicle.route.form</field>
+		<field name="model">fleet.vehicle.route</field>
+		<field name="arch" type="xml">
+			<form string="Route Form">
+				<header>
+					<!-- <button name="action_confirm" string="Confirm Shipment Order" class="btn-primary" type="object" attrs="{'invisible': [('bool_field', '=', True)]}"/>
+					<field name="bool_field" invisible="1"/> -->
+				</header>
+				<sheet>
+					<div class="oe_title">
+						<label for="name" class="oe_edit_only"/>
+							<h1>				
+								<field name="name" placeholder="e.g. DAR - MORO (20FT)"/>
+							</h1>
+					</div>
+					<group>
+						<group>
+							<field name="route_product_id" domain="[('is_route', '=', True)]"/>
+							<field name="distance"/>
+							<field name="total_fuel"/>
+						</group>
+						<group>
+							<field name="fuel_rate"/>
+							<field name="total_route_cost"/>
+						</group>
+					</group>
+					<notebook>
+						<page string="Route Cost">
+							<field name="route_cost_id">
+								<tree string="Cost" editable="bottom">
+									<field name="name"/>
+									<field name="unit_price"/>
+									<field name="cost"/>
+								</tree>
+							</field>
+
+							<div class="oe_clear"/>
+						</page>
+						<page string="Client Price">
+							<field name="route_client_id">
+								<tree string="Client" editable="bottom">
+									<!-- <field name="route_id"/> -->
+									<field name="client_id"/>
+									<field name="price"/>
+								</tree>
+							</field>
+
+							<div class="oe_clear"/>
+						</page>
+					</notebook>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<record id='fms_vehicle_route_action' model='ir.actions.act_window'>
+		<field name="name">Routes</field>
+		<field name="res_model">fleet.vehicle.route</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+    <menuitem id="fms_vehicle_route" name="Routes" parent="menu_fms_settings_routes" action="fms_vehicle_route_action" sequence="10" />
+</odoo>

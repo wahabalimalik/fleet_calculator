@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+   <record id='fms_fleet_vehicle_costs_tree' model='ir.ui.view'>
+        <field name="name">fleet.vehicle.expense.tree</field>
+        <field name="model">fleet.vehicle.expense</field>
+        <field name="arch" type="xml">
+            <tree string="Vehicle Expenses">
+                <field name="date" /> 
+                <field name="name" /> 
+                <field name="vehicle_id" /> 
+                <field name="quantity" /> 
+                <field name="amount" sum="Total"/> 
+            </tree>
+        </field>
+    </record>
+    <record id='fms_fleet_vehicle_costs_form' model='ir.ui.view'>
+        <field name="name">fleet.vehicle.expense.form</field>
+        <field name="model">fleet.vehicle.expense</field>
+        <field name="arch" type="xml">
+            <form string="Vehicle costs">
+                <sheet>
+                    <group col="2" string="Cost Details">
+                        <group>
+                            <field name="vehicle_id" />
+                            <field name="name"/>
+                            <field name="amount"/>
+                        </group>
+                        <group>
+                            <field name="quantity" sum="Total"/>
+                            <field name="date"/>
+                            <field name="parent_id" groups="base.group_no_one"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+	<record id='fms_fleet_vehicle_costs_action' model='ir.actions.act_window'>
+		<field name="name">Vehicle Expenses</field>
+		<field name="res_model">fleet.vehicle.expense</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+	</record> 
+	<menuitem action="fms_fleet_vehicle_costs_action" name="Vehicles Expenses" parent="menu_fms_expense" id="fms_fleet_vehicle_costs_menu" />
+</odoo>

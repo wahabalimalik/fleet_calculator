@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	 <record id='fms.inventory_stock_picking_action' model='ir.actions.act_window'>
+    <field name="name">Consumable Reuqest</field>
+    <field name="res_model">stock.picking</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+  <!-- <menuitem id="fms.inventory_stock_picking" name="Consumable Requisition" parent="menu_fms_inventory"  sequence="10" action="fms.inventory_stock_picking_action"/> -->
+</odoo>

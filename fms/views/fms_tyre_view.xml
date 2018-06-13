@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<!-- View -->
+
+		<record id='fms_tyre_management_tree' model='ir.ui.view'>
+			<field name="name">fms tyre_management</field>
+			<field name="model">fms.tyre</field>
+			<field name="arch" type="xml">
+				<tree string="Shipment Order">
+					<field name="fitment_date"/>
+					<field name="vehicle_id" />
+					<field name="vehicle_number"/>
+					<field name="tyre_size"/>
+					<field name="tyre_make"/>
+					<field name="tyre_model"/>
+					<field name="position_fitted"/>
+					<field name="serial_number" />
+					<field name="reading"/>
+					<field name="driver_id"/>
+					<field name="total_tyre"/>
+					<field name="remaining_stock"/>
+				</tree>
+			</field>
+		</record>
+
+		<!-- <record id="shipment_order_form" model="ir.ui.view" >
+			<field name="name">shipment.order.form</field>
+			<field name="model">shipment.order</field>
+			<field name="arch" type="xml">
+				<form position="replace">
+				<form string="Shipment Order Form">
+					<header>
+						<button name="action_confirm" string="Confirm Shipment Order" class="btn-primary" type="object" attrs="{'invisible': [('bool_field', '=', True)]}"/>
+						<field name="bool_field" invisible="1"/>
+					</header>
+					<sheet>
+						<div class="oe_title">
+							<label for="name" class="oe_edit_only"/>
+							<h1>
+								<field name="name" placeholder="e.g. Shipment Order No."/>
+							</h1>
+						</div>
+						<group>
+							<group>
+								<field name="route"/>
+								<field name="client"/>
+							</group>
+							<group>
+								<field name="date"/>
+								<field name="description"/>
+							</group>
+						</group>
+						<notebook>
+							<page string="Vehicle Associated">
+								<field name="vehicle_ids">
+									<tree string="Cost" editable="bottom">
+										<field name="vehicle_id"/>
+										<field name="cost_sub_total"/>
+									</tree>
+								</field>
+								<group class="oe_subtotal_footer oe_right" colspan="2" >
+								</group>
+
+								<div class="oe_clear"/>
+							</page>
+							<page string="Vehicle Cost List">
+								<field name="vehicle_ids">
+									<tree string="Cost" editable="bottom">
+										<field name="vehicle_id"/>
+									</tree>
+								</field>
+								<group class="oe_subtotal_footer oe_right" colspan="2" >
+								</group>
+
+								<div class="oe_clear"/>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</form>
+			</field>
+		</record>
+
+		<record id='shipment_order_search' model='ir.ui.view'>
+			<field name="name">shipment.order.search</field>
+			<field name="model">shipment.order</field>
+			<field name="arch" type="xml">
+				<search string="Shipment Order">
+					<field name="date"/>
+					<field name="name" />
+					<field name="client"/>
+					<field name="route"/>
+					<field name="no_trucks"/>
+					<field name="status"/>
+				</search>
+			</field>
+		</record> -->
+
+	<!-- Action -->
+
+		<record 
+			id='tyre_management_action' 
+			model='ir.actions.act_window'>
+
+			<field name="name">Tyre Management</field>
+			<field name="res_model">fms.tyre</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+			<!-- <field name="search_view_id" ref="shipment_order_search" /> -->
+		</record>
+
+    <!-- Menuitem -->
+
+		<menuitem 
+			name="Tyre Management" 
+			parent="fms.menu_fms"
+			id="fms.tyre_management" 
+			sequence="20" 
+		/>
+
+		<menuitem 
+			name="Tyre Logs" 
+			parent="fms.tyre_management"
+			id="fms.tyre_logs" 
+			sequence="1" 
+			action="tyre_management_action"
+		/>
+</odoo>

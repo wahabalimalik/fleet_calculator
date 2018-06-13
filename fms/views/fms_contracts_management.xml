@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<!-- View -->
+
+		<record id='fms_vehicles_contracts_logs_form' model='ir.ui.view'>
+            <field name="name">fms fms_vehicles_contracts_logs_form</field>
+            <field name="model">fleet.vehicle.log.contract</field>
+            <field name="arch" type="xml">
+                <form string="Vehicles Contracts">
+                	<sheet>
+	                	<group>
+	                		<group>
+		                    	<field name="vehicle_id" />
+		                    	<field name="vehicle_number" />
+		                	</group>
+		                	<group>
+			                    <field name="trailor_id"/>
+			                </group>
+		                </group>
+		                <notebook>
+		                	<page string=" LOCAL INSUARANCE">
+		                		<group col="4">
+			                    	<field name="start_date" string= "Start Date"/>
+			                    	<field name="expiration_date" string= "Expiration Date" />
+			                    </group>
+
+		                	</page>
+		                	<page string="SUMATRA">
+		                		<group col="4">
+			                    	<field 
+			                    		name="sumatra_start_date"
+			                    		string= "Start Date" />
+			                    	<field 
+			                    		name="sumatra_expiration_date" 
+			                    		string= "Expiration Date" />
+			                    </group>
+
+		                	</page>
+		                	<page string="Kenya Insuarance ">
+		                		<group col="4">
+			                    	<field 
+			                    		name="kenya_start_date" 
+			                    		string= "Start Date" />
+			                    	<field 
+			                    		name="kenya_expiration_date" 
+			                    		string= "Expiration Date" />
+			                    </group>
+
+		                	</page>
+		                </notebook>
+		            </sheet>
+                </form>
+            </field>
+        </record>
+
+		<record id='fms_vehicles_contracts_logs_tree' model='ir.ui.view'>
+            <field name="name">fms fms_vehicles_contracts_logs_tree</field>
+            <field name="model">fleet.vehicle.log.contract</field>
+            <field name="arch" type="xml">
+                <tree string="Vehicles Contracts">
+                    <field name="vehicle_number" /> 
+                    <field name="trailor_id"/>
+                    <field name="start_date"/>
+                    <field name="expiration_date"/>
+                    <field name="sumatra_start_date"/>
+                    <field name="sumatra_expiration_date"/>
+                    <field name="kenya_start_date"/>
+                    <field name="kenya_expiration_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record 
+        	id='fms_vehicles_contracts_logs_search' model='ir.ui.view'>
+
+            <field name="name">fms fms_vehicles_contracts_logs_search</field>
+            <field name="model">fleet.vehicle.log.contract</field>
+            <field name="arch" type="xml">
+                <search string="Vehicles Contracts">
+            		<field name="vehicle_number" /> 
+                    <field name="trailor_id"/>
+                    <field name="start_date"/>
+                    <field name="expiration_date"/>
+                    <field name="sumatra_start_date"/>
+                    <field name="sumatra_expiration_date"/>
+                    <field name="kenya_start_date"/>
+                    <field name="kenya_expiration_date"/>
+            	</search>
+        	</field>
+        </record>
+
+    <!-- Action -->
+
+		<record 
+			id='fms.vehicles_contracts_logs_action' 
+			model='ir.actions.act_window'>
+		    
+		    <field name="name">Vehicles Contracts</field>
+            <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">fleet.vehicle.log.contract</field>
+		    <field name="view_type">form</field>
+		    <field name="view_mode">tree,form</field>
+		    <field name="search_view_id" ref="fms_vehicles_contracts_logs_search" />
+		</record>
+
+		<record id="fms.action_all_owners_tree" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="fms.fms_vehicles_contracts_logs_tree"/>
+            <field name="act_window_id" ref="fms.vehicles_contracts_logs_action"/>
+        </record>
+
+        <record id="fms.action_all_owners_form" model="ir.actions.act_window.view">
+            <field eval="1" name="sequence"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="fms.fms_vehicles_contracts_logs_form"/>
+            <field name="act_window_id" ref="fms.vehicles_contracts_logs_action"/>
+        </record>
+		
+    <!-- Menuitem -->
+
+		<menuitem 
+			id="fms.vehicles_contracts_logs" 
+			name="Vehicles Contracts" 
+			parent="menu_fms_contract"  
+			sequence="10" 
+			action="fms.vehicles_contracts_logs_action"
+		/>
+</odoo>

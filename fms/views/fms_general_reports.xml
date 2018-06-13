@@ -1,0 +1,25 @@
+<odoo>
+	<!-- 	<record id='x_bve_shipmentrevenuereport_action' model='ir.actions.act_window'>
+		<field name="name">Shipment Revenies Report</field>
+		<field name="res_model">x_bve.shipmentrevenuereport</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,graph</field>
+	</record>
+	<record id='x_bve_shipmentexpensesreport_action' model='ir.actions.act_window'>
+		<field name="name">Shipment Expenses Report</field>
+		<field name="res_model">x_bve.shipmentexpensesreport</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,graph</field>
+	</record>
+	<record id='fleet_vehicle_log_fuel_report_action' model='ir.actions.act_window'>
+		<field name="name">Vehicle Fuel Report</field>
+		<field name="res_model">x_bve.vehiclesfuelreport</field>
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,graph</field>
+	</record> -->
+<!-- menu_fms_general_reports -->
+
+	<!-- <menuitem name="Shipment Order1" parent="menu_fms_general_reports" id="fms.shipment_order1" sequence="10" action="shipment_order_action"/>
+	<menuitem name="Shipment Order2" parent="menu_fms_general_reports" id="fms.shipment_order2" sequence="10" action="shipment_order_action"/>
+	<menuitem name="Shipment Order3" parent="menu_fms_general_reports" id="fms.shipment_order3" sequence="10" action="shipment_order_action"/> -->
+</odoo>

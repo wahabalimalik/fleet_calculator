@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- View -->
+
+        <record id='fms_vehicle_accident_log_form' model='ir.ui.view'>
+            <field name="name">fleet.vehicle.accident.form</field>
+            <field name="model">fleet.vehicle.accident</field>
+            <field name="arch" type="xml">
+                <form string="Accident Logs">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="date"/> 
+                                <field name="vehicle_id"/>
+                                <field name="trailor_id"/>
+                                <field name="vehicle_number"/>
+                            </group>
+                            <group>
+                                <field 
+                                    name="damage_cause" 
+                                    widget="many2many_tags"
+                                />
+                                <field name="location" /> 
+                                <field 
+                                    name="employee_id" 
+                                    context="{'default_driver': True}"/>
+                            </group>
+                            <field name="accident_report" /> 
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id='fms_vehicle_accident_log_tree' model='ir.ui.view'>
+            <field name="name">fleet.vehicle.accident.tree</field>
+            <field name="model">fleet.vehicle.accident</field>
+            <field name="arch" type="xml">
+                <tree string="Accident Logs">
+                    <field name="date" /> 
+                    <field name="vehicle_number"/>
+                    <field name="vehicle_id" invisible="1"/>
+                    <field name="trailor_id"/>
+                    <field name="employee_id" /> 
+                    <field name="location" /> 
+                    <field name="damage_cause" />
+                    <field name="accident_report" /> 
+                </tree>
+            </field>
+        </record>
+
+    <!-- Menuitem -->
+        <menuitem 
+            id="menu_vehicle_accident_log" 
+            name="Accident Logs" 
+            parent="menu_fms_accident" 
+            sequence="31" 
+            action="fms_vehicle_accident_log_action"
+        />
+
+    <!-- Action -->
+        <record 
+            id='fms_vehicle_accident_log_action' 
+            model='ir.actions.act_window'>
+            
+            <field name="name">Accident Logs</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fleet.vehicle.accident</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <field name="context">{}</field>
+        </record>
+</odoo>

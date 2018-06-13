@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record model="ir.ui.view" id="fms.product_ext">
+    <field name="name">fms product_ext</field>
+    <field name="model">product.template</field>
+    <field name="inherit_id" ref="product.product_template_only_form_view"/>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//page[@name='sales']" position="before">
+       <!--    <page name="cost" string="Cost">
+            <field name="cost_line_id">
+              <tree string="Cost" editable="bottom">
+                <field name="expense_name"/>
+                <field name="expense_variable_name"/>
+                <field name="expense_amount"/>
+              </tree>
+            </field>
+          </page>-->
+          <page name="route" string="Route">
+            <field name="is_route" />
+          </page> 
+        </xpath>
+      </data>
+    </field>
+  </record>
+
+
+
+<!--   <record model="ir.ui.view" id="fms.sale_order_form_ext">
+    <field name="name">fms sale_order_form_ext</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.view_order_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='order_line']/tree/field[@name='name']" position="after">
+        <field name="vehicle"/>
+      </xpath>
+    </field>
+  </record> -->
+
+<!--   <record model="ir.ui.view" id="fms.res_partner_form_ext">
+    <field name="name">fms res_partner_form_ext</field>
+    <field name="model">res.partner</field>
+    <field name="inherit_id" ref="base.view_partner_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='function']" position="after">
+        <field name="rate"/>
+      </xpath>
+    </field>
+  </record> -->
+
+<!--   <record model="ir.ui.view" id="fms.fleet_sales">
+    <field name="name">fms fleet_sales</field>
+    <field name="model">fleet.sale</field>
+    <field name="arch" type="xml">
+      <form string="Fleet Sale">
+        <div class="oe_title">
+          <label for="name" class="oe_edit_only"/>
+          <h1>
+            <field name="name" placeholder="e.g. Model S"/>
+          </h1>
+        </div>
+        <group>
+          <group>
+            <field name="route"/>
+            <field name="client"/>
+            <field name="rate"/>
+          </group>
+          <group>
+            <field name="date"/>
+            <field name="total"/>
+          </group>
+        </group>
+      </form>
+    </field>
+  </record> -->
+
+  <record id='fms.fleet_vehicle_sale_action' model='ir.actions.act_window'>
+    <field name="name">Vehicle Sale</field>
+    <field name="res_model">fleet.sale</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+    <record id='fleet_vehicle_sale_tree' model='ir.ui.view'>
+    <field name="name">fleet.sale.tree</field>
+    <field name="model">fleet.sale</field>
+    <field name="arch" type="xml">
+      <tree string="Vehicle Sales">
+                <field name="name"/>
+                <field name="route"/>
+                <field name="client"/>
+                <field name="rate"/>
+                <field name="date"/>
+                <field name="total" sum="Total"/>
+      </tree>
+    </field>
+  </record>
+
+<!--   <record id='fleet_vehicle_sale_tree' model='ir.ui.view'>
+    <field name="name">fleet.sale.tree</field>
+    <field name="model">fleet.sale</field>
+    <field name="arch" type="xml">
+      <tree string="Vehicle Sales">
+        <field name="name" /> 
+        <field name="route" /> 
+        <field name="client" /> 
+        <field name="rate" /> 
+        <field name="date" /> 
+        <field name="total" /> 
+      </tree>
+    </field>
+  </record> -->
+
+<!--   
+  <record model="ir.ui.view" id="fms.vehicle_form_ext">
+    <field name="name">fms vehicle_form_ext</field>
+    <field name="model">fleet.vehicle</field>
+    <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+    <field name="arch" type="xml">
+      <xpath  expr="//button[@name='return_action_to_open']"  position="before">
+        <button type="object" name="action_view_sale" class="oe_stat_button" icon="fa-money" groups="base.group_user">
+          <field  name="sale_count"  widget="statinfo"  string="Vehicle Sale"/>
+        </button>
+        <button type="object" name="action_view_expense" class="oe_stat_button" icon="fa-money" groups="base.group_user">
+          <field name="expense_count" widget="statinfo" string="Vehicle Expense"/>
+        </button>
+      </xpath>
+    </field>
+  </record> -->
+
+  <menuitem icon="fa-truck" id="menu_fms" name="Jambo Freight" sequence="10" web_icon="fms,static/description/icon.png"/>
+
+  <!-- Top Menus -->
+  <menuitem id="menu_fms_shipments" name="Vehicles Shipments" parent="menu_fms" sequence="10"/>
+  <menuitem id="menu_fms_expense" name="Expenses Management" parent="menu_fms" sequence="10"/>
+  <menuitem id="menu_fms_fuel_tanker" name="Fuel Management" parent="menu_fms" sequence="20"/>
+  <menuitem id="menu_fms_general_reports" name="General Reports" parent="menu_fms" sequence="20"/>
+  <!-- <menuitem id="menu_fms_inventory" name="Inventory Management" parent="menu_fms" sequence="30"/> -->
+  <menuitem id="menu_fms_service" name="Service Management" parent="menu_fms" sequence="30"/>
+  <menuitem id="menu_fms_contract" name="Contract Management" parent="menu_fms" sequence="40"/>
+  <menuitem id="menu_fms_accident" name="Accident Management" parent="menu_fms" sequence="50"/>
+  <menuitem id="menu_fms_settings" name="Configuration" parent="menu_fms" sequence="60"/>
+
+  <!-- Sub Menus -->
+
+  <!-- Vehicles Shipments, Sub Menus -->
+  <menuitem id="fms.fleet_sale" name="Vehicles Revenues" parent="menu_fms_shipments"  sequence="99" action="fms.fleet_vehicle_sale_action"/>
+
+
+  <!--  Configuration, Sub Menus -->
+  <menuitem id="menu_fms_settings_unit" name="Vehicle Units" parent="menu_fms_settings" sequence="30"/>
+  <menuitem id="menu_fms_settings_routes" name="Route Management" parent="menu_fms_settings" sequence="30"/>
+  <!-- <menuitem id="menu_fms_shipment_reports" name="Reports" parent="menu_fms_settings" sequence="30"/> -->
+
+</odoo>
+

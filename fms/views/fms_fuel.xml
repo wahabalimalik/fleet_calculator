@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    
+    <!-- View -->
+        <record 
+            id="view_fuel_tanker_log_form" 
+            model="ir.ui.view">
+
+            <field name="name">fuel.tanker.log.form</field>
+            <field name="model">fuel.tanker.log</field>
+            <field name="arch" type="xml">
+                <form string="Fuel Pump Log">
+                    <header>
+                        <button name="action_confirm" string="Confirm Log" class="btn-primary" type="object" attrs="{'invisible': [('is_done', '=', True)]}"/>
+                        <field name="is_done" invisible="1"/>
+                    </header>
+                        <sheet>
+                            <group>
+                                <group>
+                                    <field name="name"/>
+                                    <field name="date"/>
+                                    <field name="fuel_issue"/> 
+                                    <field name="fuelled_amount"/>
+                                    <field name="operator_id"/>
+                                </group>
+                                <group>
+                                    <field name="reading_before"/>
+                                    <field name="reading_after"/>
+                                    <field name="fuel_deliver"/> 
+                                    <field name="fuel_in_tanker"/>
+                                    <field name="fuel_discrepancy"/>
+                                </group>
+                            </group>
+                        </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record 
+            id='fuel_tanker_log_tree' 
+            model='ir.ui.view'>
+
+            <field name="name">fuel.tanker.log.tree</field>
+            <field name="model">fuel.tanker.log</field>
+            <field name="arch" type="xml">
+                <tree string="Tanker Logs">
+                    <field name="date"/> 
+                    <field name="reading_before"/> 
+                    <field name="fuel_deliver"/> 
+                    <field name="fuel_issue"/> 
+                    <field name="reading_after"/> 
+                </tree>
+            </field>
+        </record>
+
+        <record 
+            id="view_fuel_tanker_vehicle_log_form" 
+            model="ir.ui.view">
+
+            <field name="name">fuel.tanker.vehicle.log.form</field>
+            <field name="model">fuel.tanker.vehicle.log</field>
+            <field name="arch" type="xml">
+                    <form string="Fuel Pump Log">
+                    <header>
+                        <button name="action_confirm" string="Confirm Log" class="btn-primary" type="object" attrs="{'invisible': [('is_done', '=', True)]}"/>
+                        <field name="is_done" invisible="1"/>
+                    </header>
+                        <sheet>
+                            <group>
+                                <group>
+                                    <field name="name" domain="[('is_filled','=', False)]"/>
+                                    <field name="tanker_id" />
+                                    <field name="pump_id"/>
+                                    <field name="date"/>
+                                    <field name="reading_before"/>
+                                </group>
+                                <group>
+                                    <field name="fuel_in_tanker"/>
+                                    <field name="total_fuel_voucher"/>
+                                    <field name="fuel_discrepancy"/>
+                                    <field name="operator_id"/>
+                                    <field name="driver_id"/>
+                                    <field name="reading_after"/>
+                                </group>
+                            </group>
+                        </sheet>
+                    </form>
+            </field>
+        </record>
+        
+        <record 
+            id='fuel_tanker_pump_log_tree' 
+            model='ir.ui.view'>
+
+            <field name="name">fuel.tanker.log.tree</field>
+            <field name="model">fuel.tanker.vehicle.log</field>
+            <field name="arch" type="xml">
+                <tree string="Tanker Logs">
+                    <field name="date" /> 
+                    <field name="name" /> 
+                    <field name="reading_before" /> 
+                    <field name="reading_after" /> 
+                    <field name="fuel_issue" /> 
+                </tree>
+            </field>
+        </record>
+
+        <record 
+            id='fuel_actual_comp_tree' 
+            model='ir.ui.view'>
+
+            <field name="name">fms fuel_actual_comp_tree</field>
+            <field name="model">tanker.physical</field>
+            <field name="arch" type="xml">
+                <tree string="Tanker Logs">
+                    <field name="opening_reading"/> 
+                    <field name="closing_reading"/> 
+                    <field name="balence" /> 
+                    <field name="Variance"/>
+                </tree>
+            </field>
+        </record>
+
+    <!-- Action -->
+
+        <record 
+            id='fuel_tanker_log_action' 
+            model='ir.actions.act_window'>
+
+            <field name="name">Fuel Tanker Log</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fuel.tanker.log</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <field name="context">{}</field>
+        </record>
+
+        <record 
+            id='fuel_tanker_pump_log_action' 
+            model='ir.actions.act_window'>
+
+            <field name="name">Fuel Pump Log</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">fuel.tanker.vehicle.log</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <field name="context">{}</field>
+        </record>
+
+        <record 
+            id='fuel_actual_comp_action' 
+            model='ir.actions.act_window'>
+
+            <field name="name">Tank Vs Physical</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">tanker.physical</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>
+            <field name="context">{}</field>
+        </record>
+
+    <!-- Menuitem -->
+
+        <menuitem 
+            id="menu_fms_fuel_tanker_tanker_log" 
+            name="Fuel Tanker Logs" 
+            parent="menu_fms_fuel_tanker" 
+            sequence="31" 
+            action="fuel_tanker_log_action"
+        />
+
+        <menuitem 
+            id="menu_fms_fuel_tanker_pump_log" 
+            name="Fuel Pump Logs" 
+            parent="menu_fms_fuel_tanker" 
+            sequence="30" 
+            action="fuel_tanker_pump_log_action"
+        /> 
+
+        <menuitem 
+            id="fuel_actual_comp" 
+            name="Tank Vs Physical" 
+            parent="menu_fms_fuel_tanker" 
+            sequence="31" 
+            action="fuel_actual_comp_action"
+        /> 
+</odoo>
