@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_fleet_calculator_fleet_calculator,fleet_calculator.fleet_calculator,model_fleet_calculator_fleet_calculator,,1,0,0,0

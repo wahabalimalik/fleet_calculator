@@ -1,0 +1,29 @@
+id,name,model_id/id,group_id/id,perm_create,perm_unlink,perm_read,perm_write
+access_fleet_vehicle_route_client,Vehicle Route client,fms.model_fleet_vehicle_route_client,fms_groups.group_vehicles_shipments,1,1,1,1
+access_shipment_description,Shipment Description,fms.model_shipment_description,fms_groups.group_vehicles_shipments,1,1,1,1
+access_shipment_order,Shipment Order,fms.model_shipment_order,fms_groups.group_vehicles_shipments,1,1,1,1
+access_fleet_vehicle_route,Vehicle Route,fms.model_fleet_vehicle_route,fms_groups.group_vehicles_shipments,1,1,1,1
+access_tms_unit_kit,Units Kits,fms.model_tms_unit_kit,fms_groups.group_vehicles_shipments,1,1,1,1
+access_fleet_sale,Fleet Sale,fms.model_fleet_sale,fms_groups.group_vehicles_shipments,1,1,1,1
+access_shipment_order_vehicle,Shipment Order Vehicle,fms.model_shipment_order_vehicle,fms_groups.group_vehicles_shipments,1,1,1,1
+access_fleet_vehicle_expense,Vehicle Expense,fms.model_fleet_vehicle_expense,fms_groups.group_freight_users,1,1,1,1
+access_fleet_vehicle,Vehicle,fleet.model_fleet_vehicle,fms_groups.group_freight_users,1,1,1,1
+access_product_template,Product Template,account.model_product_template,fms_groups.group_freight_users,1,1,1,1
+access_fuel_tanker_vehicle_log,Vehicle Fuel,fms.model_fuel_tanker_vehicle_log,fms_groups.group_fuel_management,1,1,1,1
+access_fuel_tanker_log,Fuel Tanker Log,fms.model_fuel_tanker_log,fms_groups.group_fuel_management,1,1,1,1
+access_fleet_vehicle_log_fuel,Vehicle Fuel Voucher,fleet.model_fleet_vehicle_log_fuel,fms_groups.group_fuel_management,1,1,1,1
+access_fleet_vehicle_log_fuel_prepaid,fleet.vehicle.log.fuel.prepaid,fms.model_fleet_vehicle_log_fuel_prepaid,fms_groups.group_fuel_management,1,1,1,1
+access_product_template,Product Template,account.model_product_template,fms_groups.group_fuel_management,1,1,1,1
+access_fuel_tanker,Tanker,fms.model_fuel_tanker,fms_groups.group_fuel_management,1,1,1,1
+access_fuel_tanker_pump,Pump,fms.model_fuel_tanker_pump,fms_groups.group_fuel_management,1,1,1,1
+access_fleet_vehicle,Vehicle,fleet.model_fleet_vehicle,fms_groups.group_fuel_management,1,1,1,1
+access_product_product,Product,product.model_product_product,fms_groups.group_fuel_management,1,1,1,1
+access_fleet_vehicle,Vehicle,fleet.model_fleet_vehicle,fms_groups.group_service_management,1,1,1,1
+access_fleet_vehicle_log_services,Services for vehicles,fleet.model_fleet_vehicle_log_services,fms_groups.group_service_management,1,1,1,1
+access_fleet_service_type,Type of services available on a vehicle,fleet.model_fleet_service_type,fms_groups.group_service_management,1,1,1,1
+access_fleet_vehicle_cost,Cost related to a vehicle,fleet.model_fleet_vehicle_cost,fms_groups.group_service_management,1,1,1,1
+access_fleet_vehicle_odometer,Odometer log for a vehicle,fleet.model_fleet_vehicle_odometer,fms_groups.group_service_management,1,1,1,1
+access_fleet_vehicle_log_contract,Contract information on a vehicle,fleet.model_fleet_vehicle_log_contract,fms_groups.group_contract_management,1,1,1,1
+access_fleet_vehicle,Vehicle,fleet.model_fleet_vehicle,fms_groups.group_contract_management,1,1,1,1
+access_fleet_service_type,Type of services available on a vehicle,fleet.model_fleet_service_type,fms_groups.group_contract_management,1,1,1,1
+access_fleet_vehicle_cost,Cost related to a vehicle,fleet.model_fleet_vehicle_cost,fms_groups.group_contract_management,1,1,1,1
